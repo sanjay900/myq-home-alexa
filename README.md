@@ -51,7 +51,7 @@ Now we should be on the **Build** page for the Alexa skill.
 ### Step 3
 We will now configure the skill so that it understands the different things users can ask of it.
 
-Click on **JSON Editor** on the left. Copy everything on [this page](https://raw.githubusercontent.com/thomasmunduchira/myq-home-alexa/master/assets/IntentSchema.json) and replace the existing content in the JSON Editor with this new content.
+Click on **JSON Editor** on the left. Copy everything on [this page](https://raw.githubusercontent.com/sanjay900/myq-home-alexa/master/assets/IntentSchema.json) and replace the existing content in the JSON Editor with this new content.
 
 The fourth line in the configuration you copied and pasted should hold the default invocation name, "my queue". If you would like to set a different invocation name, feel free to do so. Make sure this invocation name doesn't conflict with any of the invocation names on your enabled skills.
 
@@ -103,7 +103,7 @@ Now we will copy and paste the required policy document for the role.
 
 Click **View Policy Document**. A text box should appear near the bottom. Click **Edit** and then click **Ok** on the confirmation popup.
 
-Copy everything on [this page](https://raw.githubusercontent.com/thomasmunduchira/myq-home-alexa/master/assets/iamPolicy.json) and replace the existing content in the text box with this new content.
+Copy everything on [this page](https://raw.githubusercontent.com/sanjay900/myq-home-alexa/master/assets/iamPolicy.json) and replace the existing content in the text box with this new content.
 
 When done, click **Allow** on the bottom right.
 
@@ -114,7 +114,7 @@ We should now be on the **Configuration** page for the Lambda function.
 ### Step 7
 We will now upload all the required code for the Lambda function.
 
-Click [here](https://drive.google.com/file/d/0Bx2mdlDO74LnR1FaZV8zMDQ2Z2M/view?usp=sharing) to access the ZIP file containing all the code. Download it to your local computer.
+Click [here](https://github.com/sanjay900/myq-home-alexa/releases/download/v1.0/index.zip) to access the ZIP file containing all the code. Download it to your local computer.
 
 Go to the **Function code** section on the **Configuration** page. Make sure it has the following settings.
 
