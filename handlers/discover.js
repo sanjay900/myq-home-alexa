@@ -16,18 +16,18 @@ const discover = {
           return this.emit('MyQServiceDown');
         }
 
-        const { returnCode, devices } = result;
+        const { code, devices } = result;
 
-        if (returnCode !== 0) {
+        if (code !== 'OK') {
           // catch error
-          return this.emit('ServiceErrorHandler', returnCode);
+          return this.emit('ServiceErrorHandler', code);
         }
 
         // parse list of devices
         let index = 1;
         for (let i = devices.length - 1; i >= 0; i -= 1) {
           const device = devices[i];
-          if (!device.id) {
+          if (!device.serial_number) {
             devices.splice(i, 1); // remove device if no ID
           } else if (!device.name) {
             device.name = `Device ${index}`; // default name if not found in endpoint response

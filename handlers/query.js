@@ -30,16 +30,16 @@ const query = {
           return this.emit('MyQServiceDown');
         }
 
-        const { returnCode } = result;
+        const { code } = result;
 
-        if (returnCode !== 0) {
+        if (code !== 'OK') {
           // catch error
-          return this.emit('ServiceErrorHandler', returnCode);
+          return this.emit('ServiceErrorHandler', code);
         }
 
         return this.emit('emit', {
           type: 'tell',
-          speechOutput: `${door.name} is ${result.doorStateDescription}`,
+          speechOutput: `${door.name} is ${result.deviceState}`,
         });
       })
       .catch(err => {
@@ -74,16 +74,16 @@ const query = {
           return this.emit('MyQServiceDown');
         }
 
-        const { returnCode } = result;
+        const { code } = result;
 
-        if (returnCode !== 0) {
+        if (code !== 'OK') {
           // catch error
-          return this.emit('ServiceErrorHandler', returnCode);
+          return this.emit('ServiceErrorHandler', code);
         }
 
         return this.emit('emit', {
           type: 'tell',
-          speechOutput: `${light.name} is ${result.lightStateDescription}`,
+          speechOutput: `${light.name} is ${result.deviceState}`,
         });
       })
       .catch(err => {

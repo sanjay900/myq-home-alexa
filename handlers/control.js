@@ -1,5 +1,6 @@
 const services = require('../utils/services');
 const utils = require('../utils/utils');
+const MyQ = require('myq-api');
 
 let { pin } = process.env;
 pin = parseFloat(pin);
@@ -42,18 +43,18 @@ const control = {
     }
 
     return services
-      .setState(door, 1, pin)
+      .setState(door, MyQ.actions.door.OPEN, pin)
       .then(result => {
         if (!result) {
           // MyQ service down
           return this.emit('MyQServiceDown');
         }
 
-        const { returnCode } = result;
+        const { code } = result;
 
-        if (returnCode !== 0) {
+        if (code !== 'OK') {
           // catch error
-          return this.emit('ServiceErrorHandler', returnCode);
+          return this.emit('ServiceErrorHandler', code);
         }
 
         return this.emit('emit', {
@@ -86,18 +87,18 @@ const control = {
     }
 
     return services
-      .setState(door, 0)
+      .setState(door, MyQ.actions.door.CLOSE)
       .then(result => {
         if (!result) {
           // MyQ service down
           return this.emit('MyQServiceDown');
         }
 
-        const { returnCode } = result;
+        const { code } = result;
 
-        if (returnCode !== 0) {
+        if (code !== 'OK') {
           // catch error
-          return this.emit('ServiceErrorHandler', returnCode);
+          return this.emit('ServiceErrorHandler', code);
         }
 
         return this.emit('emit', {
@@ -130,18 +131,18 @@ const control = {
     }
 
     return services
-      .setState(light, 1)
+      .setState(light, MyQ.actions.light.TURN_ON)
       .then(result => {
         if (!result) {
           // MyQ service down
           return this.emit('MyQServiceDown');
         }
 
-        const { returnCode } = result;
+        const { code } = result;
 
-        if (returnCode !== 0) {
+        if (code !== 'OK') {
           // catch error
-          return this.emit('ServiceErrorHandler', returnCode);
+          return this.emit('ServiceErrorHandler', code);
         }
 
         return this.emit('emit', {
@@ -174,18 +175,18 @@ const control = {
     }
 
     return services
-      .setState(light, 0)
+      .setState(light, MyQ.actions.light.TURN_OFF)
       .then(result => {
         if (!result) {
           // MyQ service down
           return this.emit('MyQServiceDown');
         }
 
-        const { returnCode } = result;
+        const { code } = result;
 
-        if (returnCode !== 0) {
+        if (code !== 'OK') {
           // catch error
-          return this.emit('ServiceErrorHandler', returnCode);
+          return this.emit('ServiceErrorHandler', code);
         }
 
         return this.emit('emit', {
